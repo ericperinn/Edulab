@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+#form {
+  background-color: #cecdc4;
+  padding: 20px;
+  border: 0;
+  max-width: 400px; 
+  width: 90%; 
+  border-radius: 10px;
+  text-align: center; 
+	font-family: 'Poppins', sans-serif;
+  background-color: #cecdc4;
+  display: flex;
+	flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.form{
+	display: flex;
+	flex-direction: column;
+	width: 100%; 
+	
+}
+
+
+.center-title {
+  color: #1b2eff;
+  font-size: 36px; 
+
+}
+
+.top-left-image {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 150px;
+}
+
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.login-button {
+  width: 100%; /* O botão ocupa a largura total do seu contêiner */
+  background-color: #1b2eff;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+a {
+  text-decoration: none;
+  color: #1b2eff;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+img {
+  display: block;
+  max-width: 100%; 
+}
+
+.email-field {
+    background-image: url('account_circle.png');
+    background-repeat: no-repeat;
+    background-position: 10px center;
+    padding-left: 40px;
+    border-radius: 10px;
+  }
+
+  .pass-field {
+    background-image: url('lock.png');
+    background-repeat: no-repeat;
+    background-position: 10px center;
+    padding-left: 40px;
+    border-radius: 10px;
+  }
+
+  .login-button {
+    width: 100%; /* O botão ocupa a largura total do seu contêiner */
+    background-color: #1b2eff;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+    display: block;
+    border-radius: 10px;
+}
+
+
+@media screen and (max-width: 767px) {
+    #form {
+      padding: 10px; /* Reduza o preenchimento do formulário */
+    }
+    .center-title {
+      font-size: 28px; /* Reduza ainda mais o tamanho do título */
+    }
+    .login-button {
+      margin-top: 10px; /* Reduza a margem superior do botão */
+    }
+    .email-field,
+    .pass-field {
+      padding-left: 30px; /* Reduza o recuo do campo de entrada */
+    }
+
+    .top-left-image{
+      max-width: 40%;
+
+    }
+  }
