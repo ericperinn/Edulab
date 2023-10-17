@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 
 function RegisterForm() {
   return (
-    <div>
-      <h2>Cadastro</h2>
+    <div className = "centerBody">
+      <h1 className="center-title" >Cadastro</h1>
       <img src = {logostem} alt="Perfil" className="top-left-image" />
 
       <form className = "form">

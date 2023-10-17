@@ -6,16 +6,24 @@
   box-sizing: border-box;
 }
 
-body {
-  font-family: 'Poppins', sans-serif;
-  background-color: #cecdc4;
+.centerBody{
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  text-align: center;  
+  background-color: #cecdc4;
+
 }
 
-.form {
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 20px;
+  padding: 20px;
+  background-color: #020a67;
+}
+
+form {
   background-color: #cecdc4;
   padding: 20px;
   border: 0;
@@ -25,12 +33,7 @@ body {
   text-align: center; 
 }
 
-h2 {
-  color: #1b2eff;
-  font-size: 36px;
-  margin-bottom: 10px; 
-  text-align: center;
-}
+
 
 .input {
     width: 100%;
@@ -53,12 +56,4 @@ h2 {
   margin-top: 20px;
 }
 
-a {
-  text-decoration: none;
-  color: #1b2eff;
-}
-
-a:hover {
-  text-decoration: underline;
-}
 

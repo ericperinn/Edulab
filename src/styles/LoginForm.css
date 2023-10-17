@@ -6,37 +6,35 @@
   box-sizing: border-box;
 }
 
-
 #form {
   background-color: #cecdc4;
   padding: 20px;
   border: 0;
-  max-width: 400px; 
-  width: 90%; 
+  max-width: 400px;
+  width: 90%;
   border-radius: 10px;
-  text-align: center; 
-	font-family: 'Poppins', sans-serif;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
   background-color: #cecdc4;
   display: flex;
-	flex-direction: column;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
 }
 
-.form{
-	display: flex;
-	flex-direction: column;
-	width: 100%; 
-	
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
-
 
 .center-title {
   color: #1b2eff;
-  font-size: 36px; 
-
+  font-size: 36px;
+  line-height: 1.5; /* Ajuste o valor conforme necessário */
 }
+
 
 .top-left-image {
   position: absolute;
@@ -44,7 +42,6 @@
   left: 20px;
   width: 150px;
 }
-
 
 input {
   width: 100%;
@@ -55,7 +52,7 @@ input {
 }
 
 .login-button {
-  width: 100%; /* O botão ocupa a largura total do seu contêiner */
+  width: 100%;
   background-color: #1b2eff;
   color: #fff;
   border: none;
@@ -77,57 +74,41 @@ a:hover {
 
 img {
   display: block;
-  max-width: 100%; 
+  max-width: 100%;
+}
+
+.email-field,
+.pass-field {
+  background-repeat: no-repeat;
+  background-position: 10px center;
+  padding-left: 40px;
+  border-radius: 10px;
 }
 
 .email-field {
-    background-image: url('account_circle.png');
-    background-repeat: no-repeat;
-    background-position: 10px center;
-    padding-left: 40px;
-    border-radius: 10px;
-  }
-
-  .pass-field {
-    background-image: url('lock.png');
-    background-repeat: no-repeat;
-    background-position: 10px center;
-    padding-left: 40px;
-    border-radius: 10px;
-  }
-
-  .login-button {
-    width: 100%; /* O botão ocupa a largura total do seu contêiner */
-    background-color: #1b2eff;
-    color: #fff;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    margin-top: 20px;
-    display: block;
-    border-radius: 10px;
+  background-image: url('account_circle.png');
 }
 
+.pass-field {
+  background-image: url('lock.png');
+}
 
 @media screen and (max-width: 767px) {
-    #form {
-      padding: 10px; /* Reduza o preenchimento do formulário */
-    }
-    .center-title {
-      font-size: 28px; /* Reduza ainda mais o tamanho do título */
-    }
-    .login-button {
-      margin-top: 10px; /* Reduza a margem superior do botão */
-    }
-    .email-field,
-    .pass-field {
-      padding-left: 30px; /* Reduza o recuo do campo de entrada */
-    }
-
-    .top-left-image{
-      max-width: 40%;
-
-    }
+  #form {
+    padding: 10px;
   }
+  .center-title {
+    font-size: 28px;
+  }
+  .login-button {
+    margin-top: 10px;
+  }
+  .email-field,
+  .pass-field {
+    padding-left: 30px;
+  }
+
+  .top-left-image {
+    max-width: 40%;
+  }
+}

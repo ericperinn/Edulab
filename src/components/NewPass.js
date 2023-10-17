@@ -6,9 +6,9 @@ import logostem from '../images/logostem.png'
 
 function NewPass() {
   return (
-    <div>
+    <div className = "centerBody">
 
-        <img src = {logostem} alt="Perfil" className="top-left-image" />
+      <img src = {logostem} alt="Perfil" className="top-left-image" />
       <div >
       <h1 className = "title" >Redefinir senha</h1>
 

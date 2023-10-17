@@ -6,7 +6,7 @@ import logostem from '../images/logostem.png'
 
 function LoginForm() {
   return (
-    <div>
+    <div className = "centerBody">
       <img src = {logostem} alt="Perfil" className="top-left-image" />
   
       <div className="center-content" id="form">
