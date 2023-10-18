@@ -16,12 +16,7 @@
 
 }
 
-body {
-  font-family: 'Poppins', sans-serif;
-  margin: 20px;
-  padding: 20px;
-  background-color: #020a67;
-}
+
 
 form {
   background-color: #cecdc4;
@@ -56,4 +51,9 @@ form {
   margin-top: 20px;
 }
 
+.title{
+  text-align: center;
+  color: #1b2eff;
+  margin-bottom: 20px;
+}
 

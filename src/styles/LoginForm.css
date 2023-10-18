@@ -6,12 +6,23 @@
   box-sizing: border-box;
 }
 
+.login-component {
+  background-color: #cecdc4; /* Cor de fundo personalizada */
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  display: grid;
+  place-items: center; /* Centraliza horizontal e verticalmente */
+  height: 100vh; /* Define a altura como 100% da altura da janela */
+}
+
 #form {
   background-color: #cecdc4;
   padding: 20px;
   border: 0;
   max-width: 400px;
-  width: 90%;
+  width: 100%;
   border-radius: 10px;
   text-align: center;
   font-family: 'Poppins', sans-serif;
@@ -20,7 +31,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 80vh;
 }
 
 .form {
