@@ -4,6 +4,7 @@ import LoginForm from './components/LoginForm';
 import RegisterForm from './components/RegisterForm';
 import NewPass from './components/NewPass';
 import MainPage from './components/MainPage';
+import CoursePage from './components/CoursePage';
 
 function Routes() {
     return(
@@ -15,6 +16,7 @@ function Routes() {
             <Route path="/cadastro" element={<RegisterForm />} />
             <Route path="/novasenha" element={<NewPass/>} />
             <Route path="/mainpage" element={<MainPage/>} />
+            <Route path="/coursepage" element={<CoursePage/>} />
           </BrowserRoutes>
         </Router>
         </div>

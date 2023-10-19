@@ -1,0 +1,122 @@
+/* CoursePage.css */
+
+.course-page-container {
+    background-color: #020a67;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    padding: 20px;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: hidden; /* Adicione overflow: hidden para evitar o aparecimento de fundo branco */
+  }
+  
+  .navbar-container {
+    width: 100%;
+  }
+  
+  .course-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1200px;
+    width: 100%;
+    background-color: rgb(2, 2, 62);
+    overflow: hidden; /* Adicione overflow: hidden para o conteúdo não ultrapassar o tamanho do container */
+    margin-top: 50px;
+    border-radius: 20px;
+  }
+  
+  .course-info {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .course-title {
+    font-size: 34px;
+    margin-top: 20px;
+    margin-bottom:20px;
+  }
+  
+  .course-details {
+    font-size: 16px;
+    margin-top: 10px;
+  }
+  
+  .course-description {
+    font-size: 16px;
+    margin-top: 10px;
+  }
+  
+  .enroll-button {
+    background-color: #1B2EFF;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .course-divider {
+    width: 1px;
+    background-color: white;
+    height: 100%;
+    margin: 0 20px;
+  }
+  
+  .course-image-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(2, 2, 62);
+    padding: 20px;
+  }
+  
+  .course-image {
+    width: 50%; /* Define a largura como 100% para a imagem ocupar todo o espaço disponível */
+    max-height: 50%; /* Define a altura como 100% para a imagem ocupar todo o espaço disponível */
+    background-color: #f8f8f8;
+    object-fit: contain;
+    margin:20px;
+  }
+  
+  /* Media query for screens smaller than 768px */
+  @media (max-width: 768px) {
+    .course-title {
+      font-size: 20px;
+    }
+  
+    .course-details,
+    .course-description {
+      font-size: 14px;
+    }
+  
+    .enroll-button {
+      padding: 8px 16px;
+      font-size: 14px;
+    }
+  }
+  
+  /* Media query for screens smaller than 480px */
+  @media (max-width: 480px) {
+    .course-title {
+      font-size: 18px;
+    }
+  
+    .course-details,
+    .course-description {
+      font-size: 12px;
+    }
+  
+    .enroll-button {
+      padding: 6px 12px;
+      font-size: 12px;
+    }
+  }
+  

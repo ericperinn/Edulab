@@ -57,3 +57,19 @@ form {
   margin-bottom: 20px;
 }
 
+.alert {
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.success {
+  background-color: #4caf50; /* Verde */
+  color: #fff;
+}
+
+.error {
+  background-color: #f44336; /* Vermelho */
+  color: #fff;
+}

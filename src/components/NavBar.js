@@ -1,12 +1,13 @@
 import React from 'react';
 import '../styles/NavBar.css'
+import { Link } from 'react-router-dom';
 
 
 
 function NavBar() {
   return (
     <div className="navbar">
-      <a href="#" className = "edulab-title">Edulab</a>
+      <Link  to="/mainpage" className = "edulab-title">Edulab</Link> 
       <a href="#">Cursos</a>
       <div className="dropdown">
         <button className="dropbtn">Certificados
