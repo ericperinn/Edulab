@@ -70,3 +70,13 @@ img {
     color: #1b2eff;
     margin-bottom: 20px;
   }
+
+  .success {
+    background-color: #4caf50; /* Verde */
+    color: #fff;
+  }
+  
+  .error {
+    background-color: #f44336; /* Vermelho */
+    color: #fff;
+  }
