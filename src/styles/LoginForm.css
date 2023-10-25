@@ -6,8 +6,10 @@
   box-sizing: border-box;
 }
 
+/* Cor de fundo personalizada #cecdc4; */
+
 .login-component {
-  background-color: #cecdc4; /* Cor de fundo personalizada */
+  background-color: #ffffff; /* Cor de fundo personalizada */
   border-radius: 10px;
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -18,7 +20,7 @@
 }
 
 #form {
-  background-color: #cecdc4;
+  background-color: #ffffff;
   padding: 20px;
   border: 0;
   max-width: 400px;
@@ -26,13 +28,13 @@
   border-radius: 10px;
   text-align: center;
   font-family: 'Poppins', sans-serif;
-  background-color: #cecdc4;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 80vh;
 }
+
 
 .form {
   display: flex;

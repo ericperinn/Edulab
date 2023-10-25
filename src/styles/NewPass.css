@@ -9,10 +9,11 @@
 
 
 #form {
-    background-color: #cecdc4;
+    background-color: #ffffff;
     margin-top: 20px;
     padding: 20px;
     border: 0;
+    
 }
 
 
@@ -26,6 +27,7 @@
 form {
     width: 300px;
     margin: 0 auto;
+    
 }
 
 input {
