@@ -12,14 +12,14 @@
   align-items: center;
   height: 100vh;
   text-align: center;  
-  background-color: #cecdc4;
+  background-color: #ffffff;
 
 }
 
 
 
-form {
-  background-color: #cecdc4;
+.form {
+  background-color: #ffffff;
   padding: 20px;
   border: 0;
   max-width: 400px; 

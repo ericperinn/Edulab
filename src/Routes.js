@@ -4,6 +4,7 @@ import LoginForm from './components/LoginForm';
 import RegisterForm from './components/RegisterForm';
 import NewPass from './components/NewPass';
 import MainPage from './components/MainPage';
+import MainPageAdmin from './components/MainPageAdmin';
 import CoursePage from './components/CoursePage';
 
 function Routes() {
@@ -16,6 +17,7 @@ function Routes() {
             <Route path="/cadastro" element={<RegisterForm />} />
             <Route path="/novasenha" element={<NewPass/>} />
             <Route path="/mainpage" element={<MainPage/>} />
+            <Route path="/mainpageadmin" element={<MainPageAdmin/>} />
             <Route path="/coursepage" element={<CoursePage/>} />
           </BrowserRoutes>
         </Router>

@@ -1,10 +1,13 @@
-/* Default styles for larger screens */
+
 .mainpage-container {
-  background-color: #020a67;
+  background-color: #ffffff;
   color: white;
   font-family: 'Poppins', sans-serif;
   padding: 20px;
+
 }
+
+
 
 .categories-title {
   font-size: 24px;
@@ -13,9 +16,10 @@
 
 .curso-images {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: wrap; /* Para ajustar os cursos à largura da tela */
   justify-content: space-between;
   align-items: flex-start;
+  background-color: #ffffff;
 }
 
 .course-container {
@@ -26,36 +30,11 @@
   border: 1px solid #e0e0e0;
   border-radius: 5px;
   margin-bottom: 20px;
-  color: #000000;
-  margin-top:20px
+  color: #000000
 }
 
 .course-container img {
   max-width: 100%;
-}
-
-/* Media query for screens smaller than 768px */
-@media (max-width: 768px) {
-  .curso-images {
-    justify-content: center; /* Center-align courses on smaller screens */
-  }
-
-  .course-container {
-    flex: 1 0 calc(50% - 20px); /* Two columns of courses on smaller screens */
-    margin: 0 10px;
-    margin-bottom: 20px;
-  }
-}
-
-/* Media query for screens smaller than 480px */
-@media (max-width: 480px) {
-  .categories-title {
-    font-size: 20px; /* Reduce title font size */
-  }
-
-  .course-container {
-    flex: 1 0 calc(100% - 20px); /* Full-width courses on smaller screens */
-  }
 }
 
 /* Estilos para os botões de navegação */
