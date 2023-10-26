@@ -7,13 +7,10 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 import 'firebase/auth';
 import { auth } from '../Config/firebase.js';
 
-<<<<<<< HEAD
 
 
 
 
-=======
->>>>>>> 50c9d32dc89b4fcaf6767f2b4d053cb8a2b6698f
 function LoginForm() {
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
@@ -30,11 +27,7 @@ function LoginForm() {
         console.log(UserCredential);
         setMensagem('Login válido');
         setMensagemTipo('success');
-<<<<<<< HEAD
         navigate('/mainpage');
-=======
-        navigate('/mainpage'); 
->>>>>>> 50c9d32dc89b4fcaf6767f2b4d053cb8a2b6698f
       })
       .catch((error) => {
         console.log('Erro:', error);
@@ -78,8 +71,4 @@ function LoginForm() {
   );
 }
 
-<<<<<<< HEAD
 export default LoginForm;
-=======
-export default LoginForm;
->>>>>>> 50c9d32dc89b4fcaf6767f2b4d053cb8a2b6698f

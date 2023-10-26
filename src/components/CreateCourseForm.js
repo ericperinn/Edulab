@@ -1,46 +1,49 @@
 import React, { useState } from 'react';
-import {ref, uploadBytesResumable, getDownloadURL} from 'firebase/storage'
-import {storage} from '/firebase'
+import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
+import { storage } from './firebase';
 
 function CreateCourseForm({ onSubmit, onCancel }) {
   const [courseName, setCourseName] = useState('');
   const [courseImage, setCourseImage] = useState('');
   const [guestName, setGuestName] = useState('');
   const [imgURL, setImgURL] = useState('');
-  const [progress, setProgress] = useState(0    );
+  const [progress, setProgress] = useState(0);
+  const [uploadingFile, setUploadingFile] = useState('');
 
-
-
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Envie os dados para a função onSubmit
 
-    const file = e.target[0]?.files[0]
+    const file = e.target[0]?.files[0];
     if (!file) return;
 
-    const storageRef = ref(storage, 'images/${file.name}')
-    const uploadTask = uploadBytesResumable(storageRef, file)
+    const storageRef = ref(storage, `images/${file.name}`);
+    const uploadTask = uploadBytesResumable(storageRef, file);
 
-uploadTask.on(
-    "state_changed",
-    snapshot => {
-        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-        setProgress(progress)
-    },
-    error => {
-        alert(error)
-    },
-    () => {
-        getDownloadURL(uploadTask.snapshot.ref).then(url => {
-            setImgURL(url)
-        })
-    }
-)
+    uploadTask.on(
+      'state_changed',
+      (snapshot) => {
+        const newProgress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        setProgress(newProgress);
+
+        if (newProgress === 100) {
+          setUploadingFile('Upload completo');
+        }
+      },
+      (error) => {
+        alert(error);
+      },
+      () => {
+        getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+          setImgURL(url);
+        });
+      }
+    );
+
+    setUploadingFile(file.name);
 
     onSubmit({
       courseName,
-      courseImage,
+      courseImage: imgURL,
       guestName,
     });
   };
@@ -56,9 +59,8 @@ uploadTask.on(
           onChange={(e) => setCourseName(e.target.value)}
         />
         <input
-          type="text"
-          placeholder="URL da Imagem do Curso"
-          value={courseImage}
+          type="file"
+          accept="image/*"
           onChange={(e) => setCourseImage(e.target.value)}
         />
         <input
@@ -72,8 +74,18 @@ uploadTask.on(
           Cancelar
         </button>
       </form>
-      {!imgURL && <progress value={progress} max="100"/>}
-      {!imgURL && <img src={imgURL} alt="imagem"/>}
+      {progress > 0 && (
+        <div>
+          <p>Enviando: {uploadingFile}</p>
+          <progress value={progress} max="100" />
+        </div>
+      )}
+      {imgURL && (
+        <div>
+          <p>Imagem enviada com sucesso!</p>
+          <img src={imgURL} alt="imagem" />
+        </div>
+      )}
     </div>
   );
 }
