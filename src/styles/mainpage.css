@@ -20,6 +20,7 @@
   justify-content: space-between;
   align-items: flex-start;
   background-color: #ffffff;
+
 }
 
 .course-container {
@@ -30,11 +31,13 @@
   border: 1px solid #e0e0e0;
   border-radius: 5px;
   margin-bottom: 20px;
-  color: #000000
+  color: #000000;
+  height: 500px;
 }
 
 .course-container img {
   max-width: 100%;
+  height: 70%;
 }
 
 /* Estilos para os botões de navegação */
@@ -44,7 +47,7 @@
   margin-top: 20px;
 }
 
-.pagination-button {
+.pagination-button, .add-course-button {
   background-color: #1B2EFF;
   color: white;
   border: none;
@@ -53,6 +56,8 @@
   border-radius: 5px;
   cursor: pointer;
 }
+
+
 
 .pagination-button:disabled {
   background-color: #929292;

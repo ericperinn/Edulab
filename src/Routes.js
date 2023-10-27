@@ -6,6 +6,7 @@ import NewPass from './components/NewPass';
 import MainPage from './components/MainPage';
 import MainPageAdmin from './components/MainPageAdmin';
 import CoursePage from './components/CoursePage';
+import DetailedCourse from './components/DetailedCourse';
 
 function Routes() {
     return(
@@ -19,6 +20,7 @@ function Routes() {
             <Route path="/mainpage" element={<MainPage/>} />
             <Route path="/mainpageadmin" element={<MainPageAdmin/>} />
             <Route path="/coursepage" element={<CoursePage/>} />
+            <Route path="/course/:id" component={DetailedCourse} />
           </BrowserRoutes>
         </Router>
         </div>

@@ -5,6 +5,7 @@ import '../styles/NavBar.css';
 import '../styles/mainpage.css';
 import BgMainPage from './BgMainPage.js';
 import NavBar from './NavBar.js';
+import { Link } from 'react-router-dom'
 
 function MainPageAdmin() {
   const [courses, setCourses] = useState([]);
@@ -14,7 +15,7 @@ function MainPageAdmin() {
   const totalPages = Math.ceil(courses.length / coursesPerPage);
 
   const [isCreatingCourse, setIsCreatingCourse] = useState(false);
-  const [newCourse, setNewCourse] = useState({ name: '', guestName: '' });
+  const [newCourse, setNewCourse] = useState({ name: '', guestName: '', description: '', location: '', time: '' });
   const [imageFile, setImageFile] = useState(null);
   const [imageURL, setImageURL] = useState(null);
 
@@ -57,7 +58,7 @@ function MainPageAdmin() {
     if (file) {
       const storage = getStorage();
       const storageRef = ref(storage, `course-images/${file.name}`);
-      
+
       try {
         await uploadBytes(storageRef, file);
         const imageUrl = await getDownloadURL(storageRef);
@@ -69,24 +70,27 @@ function MainPageAdmin() {
   };
 
   const handleCreateCourse = async () => {
-    const courseData = { ...newCourse, image: imageURL };
-  
+    const courseData = {
+      ...newCourse,
+      image: imageURL,
+    };
+
     setCreatedCourses([...createdCourses, courseData]);
-  
+
     const db = getFirestore();
     const cursosCollection = collection(db, 'eventos');
-  
+
     try {
       const docRef = await addDoc(cursosCollection, courseData);
       console.log('Novo curso adicionado com ID: ', docRef.id);
     } catch (error) {
       console.error('Erro ao adicionar o curso: ', error);
     }
-  
+
     // Clear the new course data and image URL after adding
-    setNewCourse({ name: '', guestName: '' });
+    setNewCourse({ name: '', guestName: '', description: '', location: '', time: '' });
     setImageURL(null);
-  
+
     closeCreateCoursePopup();
   };
 
@@ -102,6 +106,10 @@ function MainPageAdmin() {
             <img src={course.image} alt={course.name} />
             <p className="course-name">{course.name}</p>
             <p className="course-description">{course.description}</p>
+            <p className="course-location">{course.location}</p>
+            <p className="course-time">{course.time}</p>
+
+            <Link to={`/course/${course.id}`}>Visualizar Curso</Link>
           </div>
         ))}
         <button className="add-course-button" onClick={openCreateCoursePopup}>
@@ -127,7 +135,7 @@ function MainPageAdmin() {
         </div>
       )}
       {isCreatingCourse && (
-        <div className="create-course-popup">
+        <div className  ="create-course-popup">
           <div className="create-course-content">
             <h3>Adicionar Curso</h3>
             <input
@@ -145,6 +153,24 @@ function MainPageAdmin() {
               placeholder="Nome do Convidado"
               value={newCourse.guestName}
               onChange={(e) => setNewCourse({ ...newCourse, guestName: e.target.value })}
+            />
+            <input
+              type="text"
+              placeholder="Descrição do Curso"
+              value={newCourse.description}
+              onChange={(e) => setNewCourse({ ...newCourse, description: e.target.value })}
+            />
+            <input
+              type="text"
+              placeholder="Local do Curso"
+              value={newCourse.location}
+              onChange={(e) => setNewCourse({ ...newCourse, location: e.target.value })}
+            />
+            <input
+              type="text"
+              placeholder="Horário do Curso"
+              value={newCourse.time}
+              onChange={(e) => setNewCourse({ ...newCourse, time: e.target.value })}
             />
             <button onClick={handleCreateCourse}>Criar Curso</button>
             <button onClick={closeCreateCoursePopup}>Cancelar</button>
