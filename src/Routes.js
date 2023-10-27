@@ -20,7 +20,8 @@ function Routes() {
             <Route path="/mainpage" element={<MainPage/>} />
             <Route path="/mainpageadmin" element={<MainPageAdmin/>} />
             <Route path="/coursepage" element={<CoursePage/>} />
-            <Route path="/course/:id" component={DetailedCourse} />
+            <Route path="/course/:id" element={<DetailedCourse />} />
+
           </BrowserRoutes>
         </Router>
         </div>
