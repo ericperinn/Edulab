@@ -1,25 +1,33 @@
-import React from 'react';
-import '../styles/NavBar.css'
-import { Link } from 'react-router-dom';
-
-
+import React, { useState } from 'react';
+import '../styles/NavBar.css';
 
 function NavBar() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
   return (
-    <div className="navbar">
-      <Link  to="/mainpage" className = "edulab-title">Edulab</Link> 
-      <a href="#">Cursos</a>
-      <div className="dropdown">
-        <button className="dropbtn">Certificados
-          <i className="fa fa-caret-down"></i>
-        </button>
-        <div className="dropdown-content">
-          <a href="#">Meus Certificados</a>
-          <a href="#">Certificados em Andamento</a>
-        </div>
+    <div className={`Navbar ${menuOpen ? 'Navbar__ToggleShow' : ''}`}>
+      <div className="Navbar__Link">
+       <i>EduLab</i> 
       </div>
-      <a href="#">Redes Sociais</a>
-      <a href="#">Olá, Giovanni!</a>
+      <div className="Navbar__Link Navbar__Link-toggle" onClick={toggleMenu}>
+        <i className="fas fa-bars"></i>
+      </div>
+      <nav className={`Navbar__Items ${menuOpen ? 'Navbar__ToggleShow' : ''}`}>
+        <div className="Navbar__Link">
+          Certificados
+        </div>
+        <div className="Navbar__Link">
+          Cursos
+        </div>
+       
+        <div className="Navbar__Link">
+          Perfil
+        </div>
+      </nav>
     </div>
   );
 }

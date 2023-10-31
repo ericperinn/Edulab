@@ -135,7 +135,7 @@ const fetchCourses = async () => {
 				
     <div key={index} className="course-container">
 			 
-        <img src={course.image} alt={course.name} />
+        <img className = "course-imagein" src={course.image} alt={course.name} />
         <p className="course-name">{course.name}</p>
         <p className="course-description">{course.description}</p>
         <p className="course-location">{course.location}</p>

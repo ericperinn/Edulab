@@ -20,24 +20,46 @@
   justify-content: space-between;
   align-items: flex-start;
   background-color: #ffffff;
+  border-radius: 10px;
+  margin:50px;
 
 }
 
+
+
+
 .course-container {
-  flex: 0 0 calc(33.33% - 20px);
+  width: 420px; /* Especifica uma largura fixa */
+  height: 500px;
   margin: 0 10px;
   padding: 10px;
-  background-color: #f8f8f8;
+  background-color: rgb(255, 255, 255);
   border: 1px solid #e0e0e0;
   border-radius: 5px;
   margin-bottom: 20px;
-  color: #000000;
+  color: rgb(2, 2, 62);
   height: 500px;
+  box-shadow: 5px 10px 10px grey;
+  border-radius: 30px;
+  padding:20px;
+  text-align: center;
+  transition: all 0.3s;
+
 }
+
+
 
 .course-container img {
   max-width: 100%;
-  height: 70%;
+  height: 40vh;
+  border-radius: 10px;
+  margin: 0 auto; /* Centraliza a imagem horizontalmente */
+  display: block; /* Corrija um problema com a margem automática (margin: 0 auto) */
+}
+
+.course-container:hover {
+  transform: scale(1.1); /* Aplique uma escala de 110% quando o mouse estiver sobre o elemento */
+  box-shadow: 10px 20px 20px grey; /* Ajuste a sombra para dar uma sensação de elevação */
 }
 
 /* Estilos para os botões de navegação */
@@ -62,4 +84,16 @@
 .pagination-button:disabled {
   background-color: #929292;
   cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .course-container {
+    max-width: 90%;
+    height: auto;
+    flex-direction: row; /* Reverta para a disposição em linha para telas menores */
+  }
+  .course-container img {
+    max-width: 100%;
+    height: auto;
+  }
 }
