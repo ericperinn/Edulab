@@ -1,7 +1,7 @@
 /* CoursePage.css */
 
 .course-page-container {
-    background-color: #020a67;
+    background-color: #ffffff;
     color: white;
     font-family: 'Poppins', sans-serif;
     padding: 20px;
@@ -24,10 +24,11 @@
     align-items: flex-start;
     max-width: 1200px;
     width: 100%;
-    background-color: rgb(2, 2, 62);
+    background-color: rgb(192, 192, 192);
     overflow: hidden; /* Adicione overflow: hidden para o conteúdo não ultrapassar o tamanho do container */
     margin-top: 50px;
     border-radius: 20px;
+    color:rgb(2, 2, 62);
   }
   
   .course-info {
@@ -74,8 +75,9 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: rgb(2, 2, 62);
+    background-color: rgb(192, 192, 192);
     padding: 20px;
+    color: rgb(2, 2, 62)
   }
   
   .course-image {

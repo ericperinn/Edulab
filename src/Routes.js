@@ -21,6 +21,7 @@ function Routes() {
             <Route path="/mainpageadmin" element={<MainPageAdmin/>} />
             <Route path="/coursepage" element={<CoursePage/>} />
             <Route path="/course/:id" element={<DetailedCourse />} />
+            
 
           </BrowserRoutes>
         </Router>

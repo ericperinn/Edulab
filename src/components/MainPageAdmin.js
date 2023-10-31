@@ -1,18 +1,25 @@
 import React, { useState, useEffect } from 'react';
-import { getFirestore, collection, addDoc, getDocs } from 'firebase/firestore';
+import { getFirestore, collection, addDoc, getDocs, doc } from 'firebase/firestore';
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import '../styles/NavBar.css';
 import '../styles/mainpage.css';
 import BgMainPage from './BgMainPage.js';
 import NavBar from './NavBar.js';
 import { Link } from 'react-router-dom'
+import {useParams, useNavigate} from 'react-router-dom'
+
+
+
+
 
 function MainPageAdmin() {
+	const { id } = useParams();
   const [courses, setCourses] = useState([]);
   const [createdCourses, setCreatedCourses] = useState([]);
   const [currentSlide, setCurrentSlide] = useState(0);
   const coursesPerPage = 3;
   const totalPages = Math.ceil(courses.length / coursesPerPage);
+	const navigate = useNavigate();
 
   const [isCreatingCourse, setIsCreatingCourse] = useState(false);
   const [newCourse, setNewCourse] = useState({ name: '', guestName: '', description: '', location: '', time: '' });
@@ -25,17 +32,30 @@ function MainPageAdmin() {
   );
 
   useEffect(() => {
-    const fetchCourses = async () => {
-      const db = getFirestore();
-      const cursosCollection = collection(db, 'eventos');
+    
+const fetchCourses = async () => {
+  const db = getFirestore();
+  const cursosCollection = collection(db, 'eventos');
 
-      const cursosSnapshot = await getDocs(cursosCollection);
-      const cursosData = cursosSnapshot.docs.map((doc) => doc.data());
-      setCourses(cursosData);
-    };
+  const cursosSnapshot = await getDocs(cursosCollection);
+  const cursosData = cursosSnapshot.docs.map((doc) => {
+    const data = doc.data();
+    // Inclua o campo 'courseId' no objeto do curso com o ID do documento
+    data.courseId = doc.id;
+    return data;
+  });
+  setCourses(cursosData);
+  console.log("Courses:", cursosData);
+};
 
+
+
+
+
+  
     fetchCourses();
-  }, []);
+  }, [id]);
+  
 
   const handlePrevSlide = () => {
     setCurrentSlide(currentSlide - 1);
@@ -73,6 +93,9 @@ function MainPageAdmin() {
     const courseData = {
       ...newCourse,
       image: imageURL,
+			courseId: 'ID_DO_CURSO_GERADO_AUTOMATICAMENTE'
+
+      
     };
 
     setCreatedCourses([...createdCourses, courseData]);
@@ -81,11 +104,16 @@ function MainPageAdmin() {
     const cursosCollection = collection(db, 'eventos');
 
     try {
-      const docRef = await addDoc(cursosCollection, courseData);
-      console.log('Novo curso adicionado com ID: ', docRef.id);
-    } catch (error) {
-      console.error('Erro ao adicionar o curso: ', error);
-    }
+			const db = getFirestore();
+			const cursosCollection = collection(db, 'eventos');
+			const docRef = await addDoc(cursosCollection, courseData);
+			const courseId = docRef.id; // Obtém o ID do curso recém-adicionado
+			console.log('Novo curso adicionado com ID: ', courseId);
+			alert('Novo curso adicionado com ID: ' + courseId);
+			courseData.courseId = courseId; // Define o ID do curso no objeto
+		} catch (error) {
+			console.error('Erro ao adicionar o curso: ', error);
+		}
 
     // Clear the new course data and image URL after adding
     setNewCourse({ name: '', guestName: '', description: '', location: '', time: '' });
@@ -100,18 +128,26 @@ function MainPageAdmin() {
       <NavBar />
       <h2 className="categories-title">Categorias</h2>
       <hr className="categories-hr" />
-      <div className="curso-images">
-        {coursesToDisplay.map((course, index) => (
-          <div key={index} className="course-container">
-            <img src={course.image} alt={course.name} />
-            <p className="course-name">{course.name}</p>
-            <p className="course-description">{course.description}</p>
-            <p className="course-location">{course.location}</p>
-            <p className="course-time">{course.time}</p>
 
-            <Link to={`/course/${course.id}`}>Visualizar Curso</Link>
-          </div>
-        ))}
+      <div className="curso-images">
+
+        {coursesToDisplay.map((course, index) => (
+				
+    <div key={index} className="course-container">
+			 
+        <img src={course.image} alt={course.name} />
+        <p className="course-name">{course.name}</p>
+        <p className="course-description">{course.description}</p>
+        <p className="course-location">{course.location}</p>
+        <p className="course-time">{course.time}</p>
+
+
+
+        <Link to={`/course/${course.courseId}`}>Visualizar Curso</Link>
+    </div>
+    ))}
+        
+
         <button className="add-course-button" onClick={openCreateCoursePopup}>
           Adicionar Curso
         </button>
