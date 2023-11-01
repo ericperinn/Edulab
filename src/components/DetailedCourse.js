@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { getFirestore, doc, getDoc } from 'firebase/firestore';
+import { getFirestore, doc, getDoc, collection, setDoc } from 'firebase/firestore';
 import NavBar from './NavBar';
 import '../styles/CoursePage.css';
-
+import cursoImage from '../images/cursoImage.jpg';
 
 
 function DetailedCourse() {
@@ -11,6 +11,7 @@ function DetailedCourse() {
     console.log("Course ID from URL:", id);
     const [course, setCourse] = useState(null);
     const [imageURL, setImageURL] = useState(''); // Adicione um estado para a URL da imagem
+    const [isEnrolled, setIsEnrolled] = useState(false);
   
     useEffect(() => {
       console.log("Inside useEffect. ID:", id);
@@ -34,6 +35,32 @@ function DetailedCourse() {
   
       fetchCourseDetails();
     }, [id]);
+
+const handleEnroll = async () => {
+    const db = getFirestore();
+    const courseId = id; // ID do curso
+    const userId = 'seu_id_de_usuario'; // Substitua pelo ID do usuário autenticado
+    const cursoRef = doc(db, 'eventos', courseId);
+    const alunosInscritosRef = collection(cursoRef, 'alunosInscritos');
+
+    try {
+      // Verifique se o aluno já está inscrito no curso
+      const alunoSnapshot = await getDoc(doc(alunosInscritosRef, userId));
+
+      if (!alunoSnapshot.exists()) {
+        // Se o aluno não estiver inscrito, insira os dados do aluno na subcoleção
+        await setDoc(doc(alunosInscritosRef, userId), { userId });
+        setIsEnrolled(true); // Atualize o estado para indicar que o aluno está inscrito
+        console.log('Aluno inscrito com sucesso.');
+      } else {
+        console.log('O aluno já está inscrito neste curso.');
+      }
+    } catch (error) {
+      console.error('Erro ao inscrever o aluno: ', error);
+    }
+  };
+
+
   
     if (course) {
       return (
@@ -48,9 +75,15 @@ function DetailedCourse() {
                 <span>Horário: {course.time}</span><br />
               </p>
               <p className="course-description">
-                {course.description}
-              </p>
-              <button className="enroll-button">Inscrever-se</button>
+              {course.description}
+            </p>
+            {isEnrolled ? (
+              <p>Você já está inscrito neste curso.</p>
+            ) : (
+              <button className="enroll-button" onClick={handleEnroll}>
+                Inscrever-se
+              </button>
+            )}
             </div>
             <div className="course-divider"></div>
             <div className="course-image-container">
@@ -59,6 +92,7 @@ function DetailedCourse() {
           </div>
         </div>
       );
+
     } else {
       return <div>Carregando...</div>;
     }
