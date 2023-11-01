@@ -130,13 +130,14 @@ const fetchCourses = async () => {
       <hr className="categories-hr" />
 
       <div className="curso-images">
-
+		
         {coursesToDisplay.map((course, index) => (
 				
     <div key={index} className="course-container">
+		
 			 
         <img className = "course-imagein" src={course.image} alt={course.name} />
-        <p className="course-name">{course.name}</p>
+        <h3 className="course-name">{course.name}</h3>
         <p className="course-description">{course.description}</p>
         <p className="course-location">{course.location}</p>
         <p className="course-time">{course.time}</p>
