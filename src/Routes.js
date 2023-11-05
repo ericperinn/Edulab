@@ -7,6 +7,7 @@ import MainPage from './components/MainPage';
 import MainPageAdmin from './components/MainPageAdmin';
 import CoursePage from './components/CoursePage';
 import DetailedCourse from './components/DetailedCourse';
+import PrivateRoute from './components/PrivateRoute';
 
 function Routes() {
     return(
@@ -21,7 +22,7 @@ function Routes() {
             <Route path="/mainpageadmin" element={<MainPageAdmin/>} />
             <Route path="/coursepage" element={<CoursePage/>} />
             <Route path="/course/:id" element={<DetailedCourse />} />
-            
+            <PrivateRoute path="/admin" element={<MainPageAdmin />} />
 
           </BrowserRoutes>
         </Router>
