@@ -25,7 +25,7 @@ function NavBar() {
         </div>
        
         <div className="Navbar__Link">
-          Perfil
+          Sair
         </div>
       </nav>
     </div>

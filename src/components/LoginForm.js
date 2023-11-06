@@ -17,7 +17,7 @@ function LoginForm() {
   const [mensagem, setMensagem] = useState('');
   const [mensagemTipo, setMensagemTipo] = useState(''); // 'success' ou 'error'
 
-  const navigate = useNavigate(); // Inicialize o useHistory
+  const navigate = useNavigate(); 
 
   const LoginUser = (e) => {
     e.preventDefault();
@@ -31,7 +31,7 @@ function LoginForm() {
       })
       .catch((error) => {
         console.log('Erro:', error);
-        setMensagem(error.message); // Usar a mensagem de erro do Firebase
+        setMensagem(error.message); 
         setMensagemTipo('Ocorreu um erro ao fazer o login: ' + 'error');
       });
   };

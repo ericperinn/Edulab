@@ -9,6 +9,8 @@ import CoursePage from './components/CoursePage';
 import DetailedCourse from './components/DetailedCourse';
 import PrivateRoute from './components/PrivateRoute';
 
+
+
 function Routes() {
     return(
         <div>
@@ -19,10 +21,9 @@ function Routes() {
             <Route path="/cadastro" element={<RegisterForm />} />
             <Route path="/novasenha" element={<NewPass/>} />
             <Route path="/mainpage" element={<MainPage/>} />
-            <Route path="/mainpageadmin" element={<MainPageAdmin/>} />
             <Route path="/coursepage" element={<CoursePage/>} />
             <Route path="/course/:id" element={<DetailedCourse />} />
-            <PrivateRoute path="/admin" element={<MainPageAdmin />} />
+            <Route path="/mainpageadmin" element={<MainPageAdmin />} />
 
           </BrowserRoutes>
         </Router>
