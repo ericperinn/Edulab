@@ -158,7 +158,7 @@ useEffect(() => {
 
 
 
-        <Link to={`/course/${course.courseId}`}>Visualizar Curso</Link>
+        <Link to={`/app/course/${course.courseId}`}>Visualizar Curso</Link>
     </div>
     ))}
         
