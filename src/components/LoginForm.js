@@ -6,42 +6,40 @@ import { Link } from 'react-router-dom';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import 'firebase/auth';
 import { auth } from '../Config/firebase.js';
-import {AuthContext} from '../Context/auth.js';
-import 'firebase/auth'
-
-
-
-
+import { AuthContext } from '../Context/auth.js';
 
 function LoginForm() {
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
   const [mensagem, setMensagem] = useState('');
-  const [mensagemTipo, setMensagemTipo] = useState(''); 
-  const {setLogado} = useContext(AuthContext)
+  const [mensagemTipo, setMensagemTipo] = useState('');
+  const { setLogado, setUserId } = useContext(AuthContext);
 
-
-  const navigate = useNavigate(); 
-
+  const navigate = useNavigate();
 
   const LoginUser = (e) => {
     e.preventDefault();
 
     signInWithEmailAndPassword(auth, email, senha)
       .then((UserCredential) => {
-        console.log(UserCredential);
+        const userId = UserCredential.user.uid;
+        setLogado(true);
+        setUserId(userId);
+
+        console.log('User ID:', userId); // Adicione este console.log
+
         setMensagem('Login válido');
         setMensagemTipo('success');
-        setLogado(true);
+
         navigate('/app/mainpageadmin');
       })
       .catch((error) => {
         console.log('Erro:', error);
-        setLogado(false)
-        setMensagem(error.message); 
-        setMensagemTipo('Ocorreu um erro ao fazer o login: ' + 'error');
+        setLogado(false);
+        setMensagem(error.message);
+        setMensagemTipo('Ocorreu um erro ao fazer o login: ' + error);
       });
-  };
+  }
 
   return (
     <div className="login-component">
