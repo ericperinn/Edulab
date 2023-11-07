@@ -81,7 +81,7 @@ function RegisterForm() {
         />
         <button className="register-button">Cadastrar</button>
         <p>
-          Possui conta? Fazer <Link to="/login">login</Link>
+          Possui conta? Fazer <Link to="/app">login</Link>
         </p>
         {mensagem && (
           <div className={`alert ${mensagemTipo}`}>

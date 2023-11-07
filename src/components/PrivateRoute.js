@@ -8,7 +8,7 @@ function PrivateRoute({ path, element }) {
   return auth.user ? (
     <Route path={path} element={element} />
   ) : (
-    <Navigate to="/login" />
+    <Navigate to="/app" />
   );
 }
 

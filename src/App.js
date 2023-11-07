@@ -1,18 +1,14 @@
 import React from 'react';
-
-
-import Routes from './Routes';
-
+import { BrowserRouter as Router } from 'react-router-dom'; // Importe o BrowserRouter aqui
+import AppRoutes from './Routes';
 
 function App() {
   return (
-    
-      <div className="App">
-        <Routes>
-          
-        </Routes>
-      </div>
-
+    <div className="App">
+      <Router>
+        <AppRoutes />
+      </Router>
+    </div>
   );
 }
 

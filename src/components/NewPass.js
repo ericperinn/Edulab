@@ -46,7 +46,7 @@ function NewPass() {
             {mensagem}
           </div>
         )}
-        <Link to="/login">Voltar para o login</Link>
+        <Link to="/app">Voltar para o login</Link>
       </div>
     </div>
   );
