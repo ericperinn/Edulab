@@ -107,7 +107,7 @@ useEffect(() => {
     const courseData = {
       ...newCourse,
       image: imageURL,
-			courseId: 'ID_DO_CURSO_GERADO_AUTOMATICAMENTE'
+	
 
       
     };

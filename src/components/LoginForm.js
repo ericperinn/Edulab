@@ -26,7 +26,7 @@ function LoginForm() {
         setLogado(true);
         setUserId(userId);
 
-        console.log('User ID:', userId); // Adicione este console.log
+        console.log('User ID:', userId); 
 
         setMensagem('Login válido');
         setMensagemTipo('success');
