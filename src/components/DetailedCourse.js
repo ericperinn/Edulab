@@ -3,17 +3,16 @@ import { useParams } from 'react-router-dom';
 import { getFirestore, doc, getDoc, collection, setDoc } from 'firebase/firestore';
 import NavBar from './NavBar';
 import '../styles/CoursePage.css';
+import { getAuth } from 'firebase/auth';
 
 import { AuthContext } from '../Context/auth.js';
 
 function DetailedCourse() {
   const { id } = useParams();
   const { user } = useContext(AuthContext);
-  const userId = user ? user.uid : null; 
   const [course, setCourse] = useState(null);
   const [imageURL, setImageURL] = useState('');
   const [isEnrolled, setIsEnrolled] = useState(false);
-
 
   useEffect(() => {
     const fetchCourseDetails = async () => {
@@ -37,44 +36,42 @@ function DetailedCourse() {
   }, [id]);
 
   const handleEnroll = async () => {
-  const db = getFirestore();
-  const courseId = id;
+    const db = getFirestore();
+    const courseId = id;
 
-  if (userId) {
-    const cursoRef = doc(db, 'eventos', courseId);
-    const alunosInscritosRef = collection(cursoRef, 'alunosInscritos');
-    const usuarioRef = doc(db, 'usuarios', userId);
+    const currentUser = getAuth().currentUser
 
-    try {
-      const alunoSnapshot = await getDoc(doc(alunosInscritosRef, userId));
+    if (currentUser) {
+      const userId = currentUser.uid;
+      const cursoRef = doc(db, 'eventos', courseId);
+      const alunosInscritosRef = collection(cursoRef, 'alunosInscritos');
+      const usuarioRef = doc(db, 'usuarios', userId);
 
-      if (!alunoSnapshot.exists()) {
-        await setDoc(doc(alunosInscritosRef, userId), { userId });
-        setIsEnrolled(true);
+      try {
+        const alunoSnapshot = await getDoc(doc(alunosInscritosRef, userId));
 
+        if (!alunoSnapshot.exists()) {
+          await setDoc(doc(alunosInscritosRef, userId), { userId });
+          setIsEnrolled(true);
 
-        const alunoData = await getDoc(usuarioRef);
-        const cursosInscritos = alunoData.data().cursosInscritos;
-        cursosInscritos.push(courseId);
-        await setDoc(usuarioRef, {
-          cursosInscritos,
-        });
+          const alunoData = await getDoc(usuarioRef);
+          const cursosInscritos = alunoData.data().cursosInscritos;
+          cursosInscritos.push(courseId);
+          await setDoc(usuarioRef, {
+            cursosInscritos,
+          });
 
-        console.log('Aluno inscrito com sucesso. ID: ', userId);
-      } else {
-        console.log('O aluno já está inscrito neste curso.');
+          console.log('Aluno inscrito com sucesso. ID: ', userId);
+        } else {
+          alert('O aluno já está inscrito neste curso.');
+        }
+      } catch (error) {
+        console.log('Erro ao inscrever o aluno: ', error);
       }
-    } catch (error) {
-      console.log('Erro ao inscrever o aluno: ', error);
+    } else {
+      console.log('Usuário não autenticado. Não é possível se inscrever.');
     }
-  } else {
-    console.log('Usuário não autenticado. Não é possível se inscrever.');
-  }
-};
-
-
-  console.log('User ID:', userId); // Adicione este console.log para verificar o valor de userId
-  console.log('user: ', user)
+  };
   if (course) {
     return (
       <div className="course-page-container">

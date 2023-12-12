@@ -8,6 +8,9 @@ import 'firebase/auth';
 import { auth } from '../Config/firebase.js';
 import { AuthContext } from '../Context/auth.js';
 
+
+
+
 function LoginForm() {
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');

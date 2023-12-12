@@ -1,11 +1,11 @@
 import React from 'react';
 import { Navigate, Route } from 'react-router-dom';
-import { useAuth } from '../AuthContext'; // Substitua pelo seu contexto de autenticação
+import { getAuth } from 'firebase/auth';
 
 function PrivateRoute({ path, element }) {
-  const auth = useAuth(); // Obtenha o estado de autenticação do seu contexto
+  const auth = getAuth(); // Obtenha o estado de autenticação do seu contexto
 
-  return auth.user ? (
+  return auth.currentUser ? (
     <Route path={path} element={element} />
   ) : (
     <Navigate to="/app" />

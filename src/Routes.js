@@ -7,15 +7,12 @@ import MainPage from './components/MainPage';
 import MainPageAdmin from './components/MainPageAdmin';
 import CoursePage from './components/CoursePage';
 import DetailedCourse from './components/DetailedCourse';
-import { AuthContext } from './Context/auth.js';
+import { getAuth } from 'firebase/auth';
 
 function AppRoutes() {
-  const { logado } = useContext(AuthContext);
-  console.log("Logado: ", logado)
-
 
   function SecureRoute({ element: Component }) {
-    if (!logado) {
+    if (!getAuth().currentUser) {
       // Usar o componente Navigate para redirecionar para /app
       return <Navigate to="/app" replace />;
     } else {

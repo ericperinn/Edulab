@@ -34,7 +34,7 @@ function MainPageAdmin() {
     (currentSlide + 1) * coursesPerPage
   );
 
-  useEffect(() => {
+useEffect(() => {
     
 const fetchCourses = async () => {
   const db = getFirestore();
@@ -223,8 +223,8 @@ useEffect(() => {
               value={newCourse.time}
               onChange={(e) => setNewCourse({ ...newCourse, time: e.target.value })}
             />
-            <button onClick={handleCreateCourse}>Criar Curso</button>
-            <button onClick={closeCreateCoursePopup}>Cancelar</button>
+            <button className = "popup-btn" onClick={handleCreateCourse}>Criar Curso</button>
+            <button className = "popup-btn" onClick={closeCreateCoursePopup}>Cancelar</button>
           </div>
         </div>
       )}

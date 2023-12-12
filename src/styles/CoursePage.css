@@ -1,4 +1,4 @@
-/* CoursePage.css */
+
 
 .course-page-container {
     background-color: #ffffff;
@@ -11,7 +11,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    overflow: hidden; /* Adicione overflow: hidden para evitar o aparecimento de fundo branco */
+    overflow: hidden; 
     
   }
   
@@ -55,7 +55,7 @@
   }
   
   .enroll-button {
-    background-color: #1B2EFF;
+    background-color: rgb(2, 2, 62);
     color: white;
     border: none;
     padding: 10px 20px;
@@ -66,7 +66,7 @@
   
   .course-divider {
     width: 1px;
-    background-color: #000000;
+    background-color: #000000; 
     height: 100%;
     margin: 0 20px;
     
