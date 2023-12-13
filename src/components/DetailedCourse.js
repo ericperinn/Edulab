@@ -5,11 +5,10 @@ import NavBar from './NavBar';
 import '../styles/CoursePage.css';
 import { getAuth } from 'firebase/auth';
 
-import { AuthContext } from '../Context/auth.js';
+
 
 function DetailedCourse() {
   const { id } = useParams();
-  const { user } = useContext(AuthContext);
   const [course, setCourse] = useState(null);
   const [imageURL, setImageURL] = useState('');
   const [isEnrolled, setIsEnrolled] = useState(false);

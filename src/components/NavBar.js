@@ -13,17 +13,14 @@ function NavBar() {
   };
 
   const handleSignOut = () => {
-    // Adicione a lógica para fazer logout (sign out) do Firebase
     signOut(auth)
       .then(() => {
         console.log('Usuário deslogado com sucesso');
-        // Adicione qualquer outra lógica necessária após o logout
         navigate('/app')
         
       })
       .catch((error) => {
         console.error('Erro ao deslogar:', error.message);
-        // Trate o erro, se necessário
       });
   };
 
