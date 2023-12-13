@@ -62,6 +62,7 @@ function DetailedCourse() {
           });
 
           console.log('Aluno inscrito com sucesso. ID: ', userId);
+          alert('Aluno inscrito com sucesso')
         } else {
           alert('O aluno já está inscrito neste curso.');
         }
